@@ -3,5 +3,6 @@
   {{ form.as_p }}
   <button type="submit">Upload</button>
 </form>
-
-<p>File uploaded at: <a href={{ url }}>{{ url }}</a></p>
+{% if request.POST %}
+    <p>File uploaded at: <a href={{ url }}>{{ url }}</a></p>
+{% endif %}
