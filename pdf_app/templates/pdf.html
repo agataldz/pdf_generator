@@ -1,0 +1,7 @@
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Upload</button>
+</form>
+
+<p>File uploaded at: <a href={{ url }}>{{ url }}</a></p>
