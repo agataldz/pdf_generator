@@ -6,3 +6,5 @@ class Pdf (models.Model):
     text = models.TextField()
     number = models.IntegerField()
     date = models.DateField()
+    file = models.FileField(blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)

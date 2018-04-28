@@ -1,29 +1,14 @@
-"""pdf URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import re_path
 
-import pdf_app
 from pdf import settings
-from pdf_app.views import PdfView
+from pdf_app.views import pdf_view, delete_pdf, download_pdf
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', PdfView.as_view(), name = 'pdf'),
-    path('media/files/(?P<file_name>[-\w]+)/$', pdf_app.views.download_pdf, name = 'pdf_downlaod')
+    path('', pdf_view, name = 'pdf'),
+    re_path(r'^delete/(?P<id>(\d)+)$', delete_pdf, name='delete'),
+    re_path(r'^media/files/(?P<file_name>[-\w]+)/$', download_pdf, name='pdf_downlaod')
 ] + static(settings.PDF_URL, document_root=settings.PDF_ROOT)

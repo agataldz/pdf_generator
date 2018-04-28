@@ -77,13 +77,11 @@ WSGI_APPLICATION = 'pdf.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -130,6 +128,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 PDF_ROOT = MEDIA_ROOT + 'files/'
 
-PDF_URL = '/media/files/'
+PDF_URL =  '/files/'
 
 djcelery.setup_loader()

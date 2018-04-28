@@ -3,5 +3,17 @@
   {{ form.as_p }}
   <button type="submit">Upload</button>
 </form>
-
-<p>File uploaded at: <a href={{ url }}>{{ url }}</a></p>
+<p>Recently uploaded:</p>
+<ul>
+{% for file in files_all %}
+    {% if request.POST %}
+        {% if forloop.first %}
+            Your file: <a href={{ file.file.url }}>download</a>
+        {% endif %}
+    {% endif %}
+    <p><li><a href={{ file.file.url }}>{{ file.file.url }}</a></li>
+    <a href="/delete/{{ file.id }}">DELETE FILE</a>
+    {% empty %}
+        <li>Sorry, no files uploaded.</li>
+{% endfor %}
+</ul>
