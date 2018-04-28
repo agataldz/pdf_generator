@@ -3,6 +3,7 @@
   {{ form.as_p }}
   <button type="submit">Upload</button>
 </form>
+<<<<<<< HEAD
 <p>Recently uploaded:</p>
 <ul>
 {% for file in files_all %}
@@ -17,3 +18,8 @@
         <li>Sorry, no files uploaded.</li>
 {% endfor %}
 </ul>
+=======
+{% if request.POST %}
+    <p>File uploaded at: <a href={{ url }}>{{ url }}</a></p>
+{% endif %}
+>>>>>>> 4bfc297ccbc58127945e3cd8a15b9bc0cafcac09
